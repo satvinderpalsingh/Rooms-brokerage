@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Aboutus from './aboutus/aboutus';
+import Aboutus from './aboutUs/aboutus';
 import Contactus from './contactus/contactus';
 import Help from './helpandfaq/helpandfaq';
-import Homepage from './homepage/homepage';
+import Homepage from './homePage/homepage';
 import {
     BrowserRouter as Router,
     Switch,

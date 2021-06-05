@@ -1,6 +1,6 @@
 import React from 'react';
-import User from './Components/UserDashboard/user';
-import Home from './Components/Home/home';
+import User from './components/userDashboard/user';
+import Home from './components/home/home';
 const App=()=>{
     return(
         <div>
