@@ -3,18 +3,19 @@ import User from './Components/UserDashboard/user';
 import Home from './Components/Home/home';
 import Footer from './Components/Utility/footer/footer';
 import Header from './Components/Utility/header/header';
-import Sidebar from './Components/Utility/sidebar/sidebar';
+import Authentication from './Components/authentication/index';
 
-const App=()=>{
-    return(
+const App = () => {
+    return (
         <div>
+            <Header></Header>
             <User></User>
             <Home></Home>
-            <Footer></Footer>
-            <Header></Header>
-            <Sidebar></Sidebar>
 
-        </div>        
+            <Authentication></Authentication>
+            <Footer></Footer>
+
+        </div>
     );
 }
 export default App
