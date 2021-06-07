@@ -1,5 +1,4 @@
 import React, { Component, useState } from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { SidebarData } from './sidebarcontent/sidebar';
