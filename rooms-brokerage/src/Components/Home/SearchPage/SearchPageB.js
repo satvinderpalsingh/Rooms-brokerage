@@ -29,7 +29,7 @@ function SearchPageB() {
                 title="Independant luxury studio apartment"
                 description="2 guest · 3 bedroom · 1 bed · 1.5 shared bthrooms · Wifi · Kitchen"
                 star={4.3}
-                rent="₹40000 / month"
+                price="₹40000 / month"
                 size="1570 sq.ft"
             />
             <SearchResultB
@@ -38,7 +38,7 @@ function SearchPageB() {
                 title="London Studio Apartments"
                 description="4 guest · 4 bedroom · 4 bed · 2 bathrooms · Free parking · Washing Machine"
                 star={3.8}
-                rent="₹35000 / month"
+                price="₹35000 / month"
                 size="800 sq.ft"
             />
             <SearchResultB
@@ -47,7 +47,7 @@ function SearchPageB() {
                 title="30 mins to Oxford Street, Excel London"
                 description="1 guest · 1 bedroom · 1 bed · 1.5 shared bthrooms · Wifi · Kitchen · Free parking · Washing Machine"
                 star={4.1}
-                rent="₹6500 / person"
+                price="₹6500 / person"
                 size="500 sq.ft"
             />
             <SearchResultB
@@ -56,7 +56,7 @@ function SearchPageB() {
                 title="Spacious Peaceful Modern Bedroom"
                 description="3 guest · 1 bedroom · 1 bed · 1.5 shared bthrooms · Wifi · Free parking · Dry Cleaning"
                 star={5.0}
-                rent="₹6000 / person"
+                price="₹6000 / person"
                 size="450 sq.ft"
             />
             <SearchResultB
@@ -65,7 +65,7 @@ function SearchPageB() {
                 title="The Blue Room In London"
                 description="2 guest · 1 bedroom · 1 bed · 1.5 shared bthrooms · Wifi · Washing Machine"
                 star={4.23}
-                rent="₹6500 / person"
+                price="₹6500 / person"
                 size="600 sq.ft"
             />
             <SearchResultB
@@ -74,7 +74,7 @@ function SearchPageB() {
                 title="5 Star Luxury Apartment"
                 description="3 guest · 1 bedroom · 1 bed · 1.5 shared bthrooms · Wifi · Kitchen · Free parking · Washing Machine"
                 star={3.85}
-                rent="₹9000 / person"
+                price="₹9000 / person"
                 size="1800 sq.ft"
             />
         </div>
