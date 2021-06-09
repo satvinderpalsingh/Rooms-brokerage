@@ -1,0 +1,11 @@
+.searchPage__info{
+    padding: 3px;
+}
+.searchPage__info >h1 {
+    margin-bottom: 30px;
+}
+.searchPage__info >button {
+    border-radius: 30px;
+    text-transform: inherit;
+    margin:5px;
+}
