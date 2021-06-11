@@ -6,29 +6,18 @@ import Header from './Components/Utility/Header/header';
 import Footer from './Components/Utility/Footer/footer';
 import Authentication from './Components/authentication/index';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import SearchPage from './Components/Home/SearchPage/SearchPage';
-import SearchPageB from './Components/Home/SearchPage/SearchPageB';
+import Homepage from './Components/Home/index';
 
 function App() {
   return (
     <div className="app">
-    <Router>
-      <Header />
-      <User />
-      <Authentication />
-      <Switch>
-      <Route path="/search">
-          <SearchPage />
-        </Route>
-        <Route path="/searchb">
-          <SearchPageB />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
-      </Switch>
-      <Footer />
-    </Router>
+      <Router>
+        <Header />
+        <User />
+        <Authentication />
+        <Homepage/>
+        <Footer />
+      </Router>
     </div>
   );
 }
