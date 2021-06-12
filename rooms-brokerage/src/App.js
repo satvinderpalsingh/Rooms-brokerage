@@ -3,21 +3,28 @@ import User from './Components/UserDashboard/user';
 import './App.css';
 import Home from './Components/Home/Homepage/Home';
 import Header from './Components/Utility/Header/header';
-import Footer from './Components/Utility/Footer/footer';
+import Footer from './Components/Utility/footer/footer';
 import Authentication from './Components/authentication/index';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Homepage from './Components/Home/index';
 import Owner from './Components/owner/index';
 function App() {
   return (
-    <div className="app">
+    <div >
       <Router>
-        <Header />
-        <User />
-        <Authentication />
-        <Homepage/>
-        <Owner/>
-        <Footer />
+        <Header/>
+        <Switch>
+          <Route exact path="/">
+            <Homepage />
+          </Route>
+          <Route exact path="/login">
+            <Authentication />
+          </Route>
+          <Route exact path="/register">
+            <Authentication />
+          </Route>
+        </Switch>
+        <Footer/>
       </Router>
     </div>
   );

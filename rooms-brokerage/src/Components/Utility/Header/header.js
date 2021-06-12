@@ -28,7 +28,6 @@ function Header() {
     };
     return (
         <div className='header'>
-
             <Link to={'#'} >
                 <span class="ml-auto "><AiIcons.AiOutlineBars onClick={showSidebar} /></span>
             </Link>
@@ -74,8 +73,10 @@ function Header() {
 
                 </div>
             </Hidden>
+            <Link to="/login"> <Button variant="contained" color="primary" href="#contained-buttons">
+               Login
+            </Button></Link>
             <div>
-
                 <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
                     <AccountCircleIcon />
                 </Button>
