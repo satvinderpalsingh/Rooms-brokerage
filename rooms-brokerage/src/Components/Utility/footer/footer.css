@@ -3,22 +3,25 @@
     padding: 20px;
     background-color: #f7f7f7;
     text-align: center;
+    
 }
 
-.footer > p {
+.footer>p {
     padding: 5px;
     font-size: 14px;
 }
+
 .footer__b {
-    display:flex;
-    flex:auto;
+    display: flex;
+    flex: auto;
     align-items: center;
-    justify-content:center;
+    justify-content: center;
     margin-right: 5px;
 }
+
 .footer__bi {
-    display:flex ;
+    display: flex;
     margin-right: 5px;
-    background-color:black;
+    background-color: black;
     color: white;
 }

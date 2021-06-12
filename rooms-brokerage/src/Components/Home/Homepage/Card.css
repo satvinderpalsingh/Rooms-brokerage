@@ -5,6 +5,7 @@
     box-shadow: 0px 6px 18px -9px rgba(0, 0, 0, 0.75);
     transition: transform 100ms ease-in;
     cursor: pointer;
+    height: 450px;
   }
   
   .card:hover {
