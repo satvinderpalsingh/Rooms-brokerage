@@ -206,7 +206,7 @@ span {
     .header__right {
         display: flex;
         align-items: center;
-        margin-right: 50px;
+        margin-right: 10px;
 
     }
 }

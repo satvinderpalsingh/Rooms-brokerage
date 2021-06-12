@@ -10,14 +10,27 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import Hidden from '@material-ui/core/Hidden';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 
 function Header() {
     const [sidebar, setSidebar] = useState(false);
 
     const showSidebar = () => setSidebar(!sidebar);
+
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
     return (
         <div className='header'>
+
             <Link to={'#'} >
                 <span class="ml-auto "><AiIcons.AiOutlineBars onClick={showSidebar} /></span>
             </Link>
@@ -41,32 +54,44 @@ function Header() {
                 </ul>
             </div>
             <div>
-            <Hidden xsDown>
-                <Link to='/'>
-                    <img
-                        className='header__icon'
-                        src="https://images.pexels.com/photos/430205/pexels-photo-430205.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                        alt="logo"
-                    />
-                </Link>
-            </Hidden>
+                <Hidden xsDown>
+                    <Link to='/'>
+                        <img
+                            className='header__icon'
+                            src="https://images.pexels.com/photos/430205/pexels-photo-430205.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                            alt="logo"
+                        />
+                    </Link>
+                </Hidden>
             </div>
             <div className='header__center'>
                 <input type='text' />
                 <SearchRoundedIcon />
             </div>
             <Hidden smDown>
-            <div className='header__right'>
-                <div className='header__b'>
-                    <Button varient='outlined'>Become a Seller</Button>
-                </div>
+                <div className='header__right'>
+                    <div className='header__b'>
+                        <Button varient='outlined'>Become a Seller</Button>
+                    </div>
 
-            </div>
+                </div>
             </Hidden>
             <div>
-                <LanguageIcon />
-                <ExpandMoreIcon />
-                <AccountCircleIcon />
+
+                <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+                    <AccountCircleIcon />
+                </Button>
+                <Menu
+                    id="simple-menu"
+                    anchorEl={anchorEl}
+                    keepMounted
+                    open={Boolean(anchorEl)}
+                    onClose={handleClose}
+                >
+                    <MenuItem onClick={handleClose}>Profile</MenuItem>
+                    <MenuItem onClick={handleClose}>My account</MenuItem>
+                    <MenuItem onClick={handleClose}>Login</MenuItem>
+                </Menu>
             </div>
         </div>
     );
