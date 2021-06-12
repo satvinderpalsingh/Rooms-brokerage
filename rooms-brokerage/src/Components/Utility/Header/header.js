@@ -4,6 +4,8 @@ import * as AiIcons from "react-icons/ai";
 import { SidebarData } from './sidebarcontent/sidebar';
 import './header.css';
 import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
+import LanguageIcon from '@material-ui/icons/Language';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
