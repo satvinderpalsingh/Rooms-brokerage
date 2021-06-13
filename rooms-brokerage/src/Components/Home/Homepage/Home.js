@@ -1,8 +1,10 @@
-import react from 'react';
+import React, { useState } from 'react';
 import './Home.css';
 import Banner from './Banner.js';
-import Card from './Card.js';
-import Grid from '@material-ui/core/Grid';
+import {Grid,Button} from '@material-ui/core';
+import { SLIDE_INFO } from './constant';
+import { Slide } from '@material-ui/core';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 /*function Home() {
     return (
         <div className='home'>
@@ -64,7 +66,7 @@ import Grid from '@material-ui/core/Grid';
         </div>
     );
 }*/
-const Home=()=>{
+/*const Home=()=>{
     return(
         <div className='home'>
             <Banner/>
@@ -125,6 +127,76 @@ const Home=()=>{
         </div>
 
         );
-}
+}*/
 
+const Home=()=>{
+    
+    const [index, setIndex] = useState(0);
+    const [slideIn, setSlideIn] = useState(true);
+    const [slideDirection, setSlideDirection] = useState('down');
+    const content = SLIDE_INFO[index];
+    const numSlides = SLIDE_INFO.length;
+    
+    const onArrowClick = (direction) => {
+        const increment = direction === 'left' ? -1 : 1;
+        const newIndex = (index + increment + numSlides) % numSlides;
+
+        const oppDirection = direction === 'left' ? 'right' : 'left';
+        setSlideDirection(direction);
+        setSlideIn(false);
+
+        setTimeout(() => {
+            setIndex(newIndex);
+            setSlideDirection(oppDirection);
+            setSlideIn(true);
+        }, 500);
+    };
+    function Arrow(props) {
+        const { direction, clickFunction } = props;
+        const icon = direction === 'left' ? <FaChevronLeft /> : <FaChevronRight />;
+    
+        return <div onClick={clickFunction}>{icon}</div>;
+    }
+    return (
+        <Grid>
+            <Grid item xs={12}>
+        <div className='App'>
+            <Arrow
+                direction='left'
+                clickFunction={() => onArrowClick('left')}
+            />
+            <Slide in={slideIn} direction={slideDirection}>
+                <div>
+                    <Banner content={content} />
+                </div>
+            </Slide>
+            <Arrow
+                direction='right'
+                clickFunction={() => onArrowClick('right')}
+            />
+        </div>
+        </Grid>
+    <div className='banner'>
+        <div className='banner1'>
+            <div className='banner1__info'>
+            <h1>Get out and Stretch your imagination</h1>
+            <h4>Find out new places to rent near you</h4>
+            <Button 
+             variant='outlined'>Explore Nearby</Button>
+            </div>
+        </div>
+        <div className='banner2'>
+            <div className='banner2__info'>
+            <h1>Looking For Your Dream Home?</h1>
+            <h4>Here is our curated list of properties available at best price</h4>
+            <Button 
+            variant='outlined'>Find Out</Button>
+            </div>
+        </div>
+
+    </div>
+    
+</Grid>
+    )
+}
 export default Home;
