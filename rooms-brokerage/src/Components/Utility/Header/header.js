@@ -54,6 +54,7 @@ function Header() {
             </div>
             <div>
                 <Hidden xsDown>
+                    
                     <Link to='/'>
                         <img
                             className='header__icon'
@@ -61,6 +62,7 @@ function Header() {
                             alt="logo"
                         />
                     </Link>
+                    
                 </Hidden>
             </div>
             <div className='header__center'>

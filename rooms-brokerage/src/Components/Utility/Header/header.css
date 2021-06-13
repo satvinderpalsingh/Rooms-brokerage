@@ -7,7 +7,11 @@
     background-color: white;
     
     width: 100%;
+
     top: 0;
+    left:0;
+    right: 0;
+
     border-bottom: 1px solid lightskyblue;
     padding-bottom: 5px;
 }
@@ -17,7 +21,11 @@
     width: 100px;
     margin-left: 30%;
     border-radius: 10%;
+    margin-top: 5px;
+    
+    
 }
+
 
 
 
