@@ -77,6 +77,7 @@
     .banner1__info{
         background-color: black;
         padding-top: 1vh;
+        padding-left: 10%;
         color: white;
         padding-bottom: 10vh;
         width:54%;
@@ -87,7 +88,8 @@
         background-color: #242582;
         padding-top: 1vh;
         color: white;
-        padding-bottom: 10vh;
+        padding-left: 10%;
+        padding-bottom: 12vh;
         width:54%;
         height: 25vh;
         margin-top: 1vh;
