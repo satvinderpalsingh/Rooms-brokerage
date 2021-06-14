@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { Component, useState } from "react";
+import * as AiIcons from "react-icons/ai";
+import { SidebarData } from './sidebarcontent/sidebar';
+import {Link} from 'react-router-dom';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -14,6 +17,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import './header.css';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -80,6 +84,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function PrimarySearchAppBar() {
+  //sidebar
+    const [sidebar, setSidebar] = useState(false);
+
+    const showSidebar = () => setSidebar(!sidebar);
+  //sidebar
+
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -170,9 +180,32 @@ export default function PrimarySearchAppBar() {
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
+            onClick={showSidebar}
           >
             <MenuIcon />
+          {/* sidebar */}
+          <div className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+                 <ul className='nav-menu-items' onClick={showSidebar}>
+                     <li className='navbar-toggle'>
+                         <Link to='#' className='menu-bars'>
+                             <AiIcons.AiOutlineClose />
+                         </Link>
+                     </li>
+                     {SidebarData.map((item, index) => {
+                         return (
+                             <li key={index} className={item.cName}>
+                                 <Link to={item.path}>
+                                     {item.icon}
+                                     <span>{item.title}</span>
+                                 </Link>
+                             </li>
+                         )
+                     })}
+                 </ul>
+             </div>
+            {/* sidebar */}
           </IconButton>
+          
           <Typography className={classes.title} variant="h6" noWrap>
             Material-UI
           </Typography>

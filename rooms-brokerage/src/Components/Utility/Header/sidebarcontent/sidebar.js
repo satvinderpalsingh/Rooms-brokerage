@@ -8,9 +8,9 @@ export const SidebarData = [
 
   {
     title: 'Become a Seller',
-    path: '/',
+    path: '/Ownerupload',
     icon: <AiIcons.AiOutlineHome />,
-    cName: 'nav-text-mobile'
+    cName: 'nav-text'       //nav-text-mobile for mobile only view
   }, 
   {
     title: 'Home',
