@@ -9,3 +9,10 @@
     text-transform: inherit;
     margin:5px;
 }
+@media (max-width: 990px) {
+    .searchPage{
+        width: 100%;
+        margin-left: 0px;
+    }
+
+}

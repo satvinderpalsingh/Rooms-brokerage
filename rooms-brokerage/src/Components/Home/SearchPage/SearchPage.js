@@ -16,27 +16,27 @@ function SearchPage() {
             </div>
             <SearchResult
                 img="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ_wbPYTxQPMcBh7SPzLFActXnP3uhifeVT_g&usqp=CAU"
-                location="Private room in center of London"
-                title="Stay at this spacious Edwardian House"
-                description="1 guest · 1 bedroom · 1 bed · 1.5 shared bthrooms · Wifi · Kitchen · Free parking · Washing Machine"
+                location="Dadar"
+                title="3BHK Apartment"
+                description="Fully Fursnished"
                 star={4.73}
                 rent="₹30000 / month"
                 size="1200 sq.ft"
             />
             <SearchResult
                 img="https://www.expatkings.com/wp-content/uploads/2018/10/Airbnb-rental-tips.-Hostmaker-1-620x349.jpg"
-                location="Private room in center of London"
-                title="Independant luxury studio apartment"
-                description="2 guest · 3 bedroom · 1 bed · 1.5 shared bthrooms · Wifi · Kitchen"
+                location="Matunga"
+                title="4BHK Apartment"
+                description="Semi-Furnished"
                 star={4.3}
                 rent="₹40000 / month"
                 size="1570 sq.ft"
             />
             <SearchResult
                 img="https://www.smartertravel.com/uploads/2017/07/Untitled-design-8.jpg"
-                location="Private room in center of London"
-                title="London Studio Apartments"
-                description="4 guest · 4 bedroom · 4 bed · 2 bathrooms · Free parking · Washing Machine"
+                location="Wadala"
+                title="2 BHK Sharing Apartment"
+                description="4 guest · Non-Furnished"
                 star={3.8}
                 rent="₹35000 / month"
                 size="800 sq.ft"
