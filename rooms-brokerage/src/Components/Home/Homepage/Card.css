@@ -2,38 +2,59 @@
   margin: 10px;
   border-radius: 10px;
   overflow: hidden;
-  border: 2px solid white;
-  height: 400px;
-  
-  
+  box-shadow: 0px 6px 18px -9px rgba(0, 0, 0, 0.75);
+  transition: transform 100ms ease-in;
+  cursor: pointer;
+  height:60vh;
+  margin-bottom: 5px;
 }
 
-.card>img {
+.card:hover {
+  transform: scale(1.07);
+}
+
+.card > img {
   object-fit: fill;
   max-width: 500px;
-  max-height: 350px;
+  max-height: 40vh;
   width: 100%;
 }
 
 .card__info {
-  margin-top: -9px;
-  border-radius: 10px;
-  padding: 20px;
-  padding-top: 20px;
-  border: 1;
-  color: white;
-}
+    margin-top: -9px;
+    border-radius: 10px;
+    padding: 20px;
+    padding-top: 20px;
+    border: 1;
+  }
 
-.card__info>h2 {
-  font-size: 18px;
-  font-weight: 600;
-  color: white;
-}
-
-.card__info>h4 {
-  font-size: 14px;
-  font-weight: 300;
-  margin-top: 8px;
-  margin-bottom: 8px;
-  color: white;
-}
+  .card__info > h2 {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .card__info > h4 {
+    font-size: 14px;
+    font-weight: 300;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+  @media (max-width: 990px) {
+    .card {
+      height:40vh;
+      width: 55vh;
+    }
+    .card__info {
+      margin-top: -25px;
+      border-radius: 10px;
+      padding: 20px;
+      padding-top: 20px;
+      border: 1;
+    }
+    .card > img {
+      object-fit: fill;
+      max-width: 500px;
+      height: 15vh;
+      width: 100%;
+    }
+  }
