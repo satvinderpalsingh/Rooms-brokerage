@@ -76,18 +76,20 @@
     }
     .banner1__info{
         background-color: black;
-        padding-top: 20%;
+        padding-top: 5vh;
         color: white;
-        padding-bottom: 30%;
-        width:60%;
-        height: 50%;
+        padding-bottom: 10vh;
+        width:25vh;
+        height: 25vh;
+        margin-top: 5vh;
     }
     .banner2__info{
         background-color: #242582;
-        padding-top: 20%;
+        padding-top: 5vh;
         color: white;
-        padding-bottom: 30%;
-        width:60%;
-        height: 50%;
+        padding-bottom: 10vh;
+        width:25vh;
+        height: 25vh;
+        margin-top: 5vh;
     }
   }
