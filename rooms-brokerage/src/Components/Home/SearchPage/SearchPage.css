@@ -14,5 +14,13 @@
         width: 100%;
         margin-left: 0px;
     }
+    .searchPage__info >h1 {
+        margin-bottom: 10px;
+    }
+    .searchPage__info >button {
+        border-radius: 40px;
+        text-transform: inherit;
+        margin:2px;
+    }
 
 }
