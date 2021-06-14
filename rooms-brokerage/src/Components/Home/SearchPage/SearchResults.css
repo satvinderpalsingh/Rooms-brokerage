@@ -27,7 +27,7 @@
 
 .searchResult__heart {
     position: absolute;
-    top: 20px;
+    top: 30px;
     right: 40px;
 }
 
@@ -88,6 +88,7 @@
     width: 350px;
     margin-left: -20px;
 }
+
 .searchResult__info {
     height: 50%;
     display: flex;
@@ -114,11 +115,6 @@
     display: flex;
     flex-direction: column;
 }
-.searchResult__heart {
-    position: absolute;
-    top: 50px;
-    right: 40px;
-}
 .searchResults__rent {
     position: absolute;
     bottom: 50px;
@@ -127,5 +123,10 @@
 .searchResults__rent > h2{
     font-weight: bold;
     font-size: 18px;
+}
+.searchResult__stars{
+    position: absolute;
+    top: 57%;
+    right:40px;
 }
 }
