@@ -67,29 +67,29 @@
       flex-direction: column;
     }
     .banner1{
-        height:50vh;
+        height:40vh;
         width:100%;
     }
     .banner2{
-        height:50vh;
+        height:40vh;
         width:100%;
     }
     .banner1__info{
         background-color: black;
-        padding-top: 5vh;
+        padding-top: 1vh;
         color: white;
         padding-bottom: 10vh;
         width:25vh;
         height: 25vh;
-        margin-top: 5vh;
+        margin-top: 1vh;
     }
     .banner2__info{
         background-color: #242582;
-        padding-top: 5vh;
+        padding-top: 1vh;
         color: white;
         padding-bottom: 10vh;
         width:25vh;
         height: 25vh;
-        margin-top: 5vh;
+        margin-top: 1vh;
     }
   }
