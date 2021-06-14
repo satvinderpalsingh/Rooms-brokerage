@@ -71,27 +71,23 @@
         width:100%;
     }
     .banner2{
-        height:25%;
+        height:50vh;
         width:100%;
     }
     .banner1__info{
         background-color: black;
+        padding-top: 20%;
         color: white;
-        padding-top:10vh ;
-        padding-left:50px ;
-        padding-right:50px ;
-        padding-bottom:15vh ;
-        width:30vh;
-        max-height:50vh;
+        padding-bottom: 30%;
+        width:60%;
+        height: 50%;
     }
     .banner2__info{
         background-color: #242582;
+        padding-top: 20%;
         color: white;
-        padding-top:10vh ;
-        padding-left:50px ;
-        padding-right:50px ;
-        padding-bottom:15vh ;
-        width:30vh;
-        max-height:50vh;
+        padding-bottom: 30%;
+        width:60%;
+        height: 50%;
     }
   }

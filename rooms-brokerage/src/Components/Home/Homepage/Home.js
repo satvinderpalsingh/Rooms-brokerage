@@ -29,8 +29,8 @@ function Home(){
                     <Card
                         src="https://media.nomadicmatt.com/2019/airbnb_breakup3.jpg"
                         title="Sharing Flats in Mumbai"
-                        description="Divides rent alongwith space."
-                        price="₹10000/month"
+                        description="Divides rent alongwith space, for working professionals."
+                        
                     />
                 </div>
                 <div className='row__3'>

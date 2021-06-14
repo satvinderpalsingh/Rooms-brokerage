@@ -23,3 +23,8 @@
     background-color: black;
     color: white;
 }
+@media (max-width: 990px) {
+    .footer{
+        width:95%;
+    }
+}   
