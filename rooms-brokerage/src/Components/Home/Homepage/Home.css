@@ -3,15 +3,15 @@
 }
 .row__1{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 .row__2{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 .row__3{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 @media (max-width:990px) {
     .home__section{
