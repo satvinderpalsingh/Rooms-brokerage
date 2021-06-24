@@ -3,13 +3,14 @@ import User from './Components/UserDashboard/user';
 import './App.css';
 import Home from './Components/Home/Homepage/Home';
 import Header from './Components/Utility/Header/header';
-import Footer from './Components/Utility/Footer/footer';
+import Footer from './Components/Utility/footer/footer';
 import Authentication from './Components/authentication/index';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Homepage from './Components/Home/index';
 import Owner from './Components/owner/index';
 import SearchPage from './Components/Home/SearchPage/SearchPage';
 import SearchPageB from './Components/Home/SearchPage/SearchPageB';
+import Contactus from './Components/Home/contactus/contactus';
 
 function App() {
   return (
@@ -37,6 +38,9 @@ function App() {
           </Route>
           <Route exact path="/Ownerdashboard">
               <Owner/>
+          </Route>
+          <Route exact path="/contactus">
+              <Contactus/>
           </Route>
         </Switch>
         <Footer/>
