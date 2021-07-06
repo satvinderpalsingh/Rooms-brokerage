@@ -1,0 +1,12 @@
+install mysql community server 
+install mysql workbench
+
+
+create a local instance (connection name : local instance , Hostname: localhost)
+
+create a schema LoginSystem
+create a table users
+create id(INT) firstname(VARCHAR) lastname(VARCHAR) email(VARCHAR) notification(VARCHAR) password(VARCHAR)
+
+
+
