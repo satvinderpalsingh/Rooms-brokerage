@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Axios from 'axios';
 
 function Copyright() {
   return (
@@ -23,6 +24,7 @@ function Copyright() {
     </Typography>
   );
 }
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -47,51 +49,84 @@ const useStyles = makeStyles((theme) => ({
 export default function SignIn() {
   const classes = useStyles();
 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const [loginStatus, setLoginStatus] = useState('');
+
+  const login = () => {
+    Axios.post('http://localhost:3001/login', {   
+
+      email : email,      
+      password : password
+
+    }).then((response)=> {
+      
+      if (response.data.message){
+        setLoginStatus(response.data.message)  ; 
+      }
+      else{
+        setLoginStatus(response.data[0].firstname + " Logged in"); 
+        
+      }
+      
+    });
+  };
+
   return (
+    
     <Container component="main" maxWidth="xs">
+      
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Sign in 
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
             variant="outlined"
             margin="normal"
-            required
+            required = {true}
             fullWidth
             id="email"
             label="Email Address"
             name="email"
             autoComplete="email"
             autoFocus
+            onChange = {(e)=> {                  
+                setEmail(e.target.value);
+            }}
           />
           <TextField
             variant="outlined"
             margin="normal"
-            required
+            required = {true}
             fullWidth
             name="password"
             label="Password"
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange = {(e)=> {                  
+                setPassword(e.target.value);
+            }}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           />
           <Button
-            type="submit"
+            
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick = {login}
           >
-            Sign In
+            Log In
           </Button>
           <Grid container>
             <Grid item xs>
@@ -107,9 +142,8 @@ export default function SignIn() {
           </Grid>
         </form>
       </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
+      <h3>{loginStatus}</h3>
+      
     </Container>
   );
 }

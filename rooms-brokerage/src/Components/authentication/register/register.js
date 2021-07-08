@@ -38,8 +38,12 @@ export default function SignUp() {
   const [emailReg, setEmailReg] = useState('');
   const [passwordReg, setPasswordReg] = useState('');
   const [notificationReg, setNotificationReg] = useState('');
+
+  const [registerStatus, setRegisterStatus] = useState('');
   
   const register = () => {
+
+
     Axios.post('http://localhost:3001/register', {
       firstname : firstnameReg,
       lastname : lastnameReg,
@@ -47,13 +51,15 @@ export default function SignUp() {
       notification : notificationReg,
       password : passwordReg
     }).then((response)=> {
-      console.log(response);
-      console.log("amit");
+      console.log(response.data);
+      setRegisterStatus(response.data.message);
+      
     });
   };
 
   return (
     <Container  component="main" maxWidth="xs">
+     
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -69,7 +75,7 @@ export default function SignUp() {
                 autoComplete="fname"
                 name="firstName"
                 variant="outlined"
-                required
+                required = {true}
                 fullWidth
                 id="firstName"
                 label="First Name"
@@ -77,12 +83,13 @@ export default function SignUp() {
                 onChange = {(e)=> {
                   setFirstnameReg(e.target.value);
                 }}
+                
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
                 variant="outlined"
-                required
+                required = {true}
                 fullWidth
                 id="lastName"
                 label="Last Name"
@@ -91,12 +98,13 @@ export default function SignUp() {
                 onChange = {(e)=> {
                   setLastnameReg(e.target.value);
                 }}
+                 
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
-                required
+                required = {true}
                 fullWidth
                 id="email"
                 label="Email Address"
@@ -105,12 +113,13 @@ export default function SignUp() {
                 onChange = {(e)=> {
                   setEmailReg(e.target.value);
                 }}
+                
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
-                required
+                required = {true}
                 fullWidth
                 name="password"
                 label="Password"
@@ -120,6 +129,7 @@ export default function SignUp() {
                 onChange = {(e)=> {
                   setPasswordReg(e.target.value);
                 }}
+                
               />
             </Grid>
             <Grid item xs={12}>
@@ -134,7 +144,7 @@ export default function SignUp() {
             </Grid>
           </Grid>
           <Button
-            type="submit"
+            type = "submit"
             fullWidth
             variant="contained"
             color="primary"
@@ -152,9 +162,7 @@ export default function SignUp() {
           </Grid>
         </form>
       </div>
-      <Box mt={5}>
-        <Copyright />
-      </Box>
+      <h3>{registerStatus}</h3>
     </Container>
   );
 }

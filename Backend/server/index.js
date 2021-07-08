@@ -27,17 +27,65 @@ app.post('/register',(req,res)=> {
   const notification = req.body.notification;
   const password = req.body.password;
 
-  db.query("INSERT INTO users (firstname, lastname, email, notification, password) VALUES (?,?,?,?,?)", 
-  [firstname, lastname, email, notification, password],
+  db.query("SELECT * FROM users WHERE (email = ?)",
+  [email],
+  (err,result) => {
+    if (err){
+      res.send({error : err});
+    }
+    if (result.length > 0){
+      res.send({message : "Email Already Registered"});
+
+    }
+    else{
+      // User registration
+      
+
+      db.query("INSERT INTO users (firstname, lastname, email, notification, password) VALUES (?,?,?,?,?)", 
+      [firstname, lastname, email, notification, password],
+      (err, result)=> {
+        if (err){
+          console.log(err);
+        }
+        else {          
+          res.send({message : "Successfully Registered"});
+        }
+      })  
+
+
+      // User registration
+    }
+  }
+
+  )
+
+  
+})
+
+app.post('/login',(req,res) => {
+  
+  const email = req.body.email;  
+  const password = req.body.password;
+
+  db.query("SELECT * FROM users WHERE (email = ?) AND (password = ?)", 
+  [email, password],
   (err, result)=> {
     if (err){
-      console.log(err);
+      res.send({err : err});
+    }
+    
+    
+    if (result.length > 0) {
+      res.send(result);
+      
     }
     else {
-      console.log("User Registerd");
+      res.send({ message : "Wrong email or password or make sure you have registered "})
     }
-  })
-})
+  });
+
+
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
