@@ -14,6 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Axios from 'axios';
 
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -66,12 +67,14 @@ export default function SignIn() {
         setLoginStatus(response.data.message)  ; 
       }
       else{
+        console.log(response.data);
         setLoginStatus(response.data[0].firstname + " Logged in"); 
         
       }
       
     });
   };
+  
 
   return (
     

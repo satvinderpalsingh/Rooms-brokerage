@@ -14,6 +14,7 @@ import useStyles from './styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 import SingleCard from "./SingleCard";
+import { withRouter } from "react-router-dom";
 
 const Ownerdashboard = () => {
 
@@ -49,4 +50,4 @@ const Ownerdashboard = () => {
   }
 
 
-export default Ownerdashboard;
+export default withRouter( Ownerdashboard );

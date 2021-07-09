@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useState} from 'react';
 import User from './Components/UserDashboard/user';
 import './App.css';
 import Home from './Components/Home/Homepage/Home';
@@ -13,6 +13,10 @@ import SearchPageB from './Components/Home/SearchPage/SearchPageB';
 import Contactus from './Components/Home/contactus/contactus';
 
 function App() {
+
+  
+  
+
   return (
     <div >
       <Router>
@@ -28,7 +32,7 @@ function App() {
             <Homepage />
           </Route>
           <Route exact path="/login">
-            <Authentication />
+            <Authentication/>
           </Route>
           <Route exact path="/register">
             <Authentication />
@@ -42,6 +46,7 @@ function App() {
           <Route exact path="/contactus">
               <Contactus/>
           </Route>
+         
         </Switch>
         <Footer/>
       </Router>
