@@ -16,6 +16,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "font-awesome": "^4.7.0",
+    "history": "^4.10.1",
     "jquery": "^3.6.0",
     "material-ui-search-bar": "^1.0.0",
     "popper.js": "^1.16.1",
