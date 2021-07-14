@@ -1,55 +1,63 @@
-import React , {useState} from 'react';
-import User from './Components/UserDashboard/user';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Switch, Route , Redirect } from 'react-router-dom';
+
 import './App.css';
-import Home from './Components/Home/Homepage/Home';
+
 import Header from './Components/Utility/Header/header';
 import Footer from './Components/Utility/Footer/footer';
 import Authentication from './Components/authentication/index';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Contactus from './Components/Home/contactus/contactus';
 import Homepage from './Components/Home/index';
 import Owner from './Components/owner/index';
 import SearchPage from './Components/Home/SearchPage/SearchPage';
 import SearchPageB from './Components/Home/SearchPage/SearchPageB';
-import Contactus from './Components/Home/contactus/contactus';
+import { ProtectedRoute } from './protectedRoute';
 
-function App() {
+
+
+
+
+
+
+
+function App() { 
+
+ 
 
   
-  
-
   return (
     <div >
+      
       <Router>
+
         <Header/>
-        <Switch>
-          <Route exact path="/search">
-            <SearchPage />
-            </Route>
-            <Route exact path="/searchb">
-            <SearchPageB />
-            </Route>
-          <Route exact path="/">
-            <Homepage />
-          </Route>
-          <Route exact path="/login">
-            <Authentication/>
-          </Route>
-          <Route exact path="/register">
-            <Authentication />
-          </Route>
-          <Route exact path="/Ownerupload">
-              <Owner/>
-          </Route>
-          <Route exact path="/Ownerdashboard">
-              <Owner/>
-          </Route>
-          <Route exact path="/contactus">
-              <Contactus/>
-          </Route>
+
+        <Switch>         
+
+          <Route exact path="/search" component = {SearchPage} />
+          
+          <Route exact path="/searchb" component = {SearchPageB} />         
+          
+          <Route exact path="/login" component = {Authentication} />
+           
+          <Route exact path="/register" component = {Authentication}/>          
+         
+          <ProtectedRoute exact path="/Ownerdashboard" component={Owner} />
+
+          <Route exact path="/contactus" component = {Contactus} />
+
+          <Route path="*" component={Homepage} />
+
+          <Route render={() => <Redirect to={{pathname: "/"}} />} />
+          
          
         </Switch>
+
         <Footer/>
+
       </Router>
+
+      
     </div>
   );
 }

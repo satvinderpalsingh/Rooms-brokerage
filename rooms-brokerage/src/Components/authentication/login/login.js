@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,8 +12,11 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-//import Axios from 'axios';
+
 import Axios, { AxiosResponse, AxiosInstance } from 'axios';
+import auth from '../Auth';
+
+import createBrowserHistory from 'history/createBrowserHistory';
 
 function Copyright() {
   return (
@@ -55,6 +58,15 @@ export default function SignIn() {
 
   const [loginStatus, setLoginStatus] = useState('');
 
+  const history = createBrowserHistory({forceRefresh:true});
+
+  Axios.defaults.withCredentials = true;
+
+  
+
+
+  
+
   const login = () => {
     Axios.post('http://localhost:3001/login', {   
 
@@ -65,15 +77,33 @@ export default function SignIn() {
       
       if (response.data.message){
         setLoginStatus(response.data.message)  ; 
+        
       }
       else{
         console.log(response.data);
         setLoginStatus(response.data[0].firstname + " Logged in"); 
+        auth.login(() => {
+          history.push("/Ownerdashboard");
+        });
         
       }
       
     });
   };
+
+
+  useEffect(() => {
+    Axios.get("http://localhost:3001/login").then((response) => {
+      if (response.data.loggedIn == true){
+        auth.login(() => {
+          history.push("/Ownerdashboard");
+          
+        });
+        
+      }
+      console.log(response);
+    })
+  }, [])
   
 
   return (
@@ -138,8 +168,8 @@ export default function SignIn() {
               </Link>
             </Grid>
             <Grid item>
-              <Link to='/register' variant="body2">
-                {"Don't have an account? Sign Up"}
+              <Link href='/register' variant="body2">
+                "Don't have an account? Sign Up"
               </Link>
             </Grid>
           </Grid>

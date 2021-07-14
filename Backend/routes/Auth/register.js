@@ -6,6 +6,9 @@ var router = express.Router();
 
 const db = database;
 
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 router.post('/',(req,res)=> {
 
     const firstname = req.body.firstname;
@@ -13,38 +16,46 @@ router.post('/',(req,res)=> {
     const email = req.body.email;
     const notification = req.body.notification;
     const password = req.body.password;
-  
-    db.query("SELECT * FROM users WHERE (email = ?)",
-    [email],
-    (err,result) => {
+
+    bcrypt.hash(password,saltRounds, (err, hash) => {
+
       if (err){
-        res.send({error : err});
+        console.log(err); 
       }
-      if (result.length > 0){
-        res.send({message : "Email Already Registered"});
-  
-      }
-      else{
-        // User registration
-        
-  
-        db.query("INSERT INTO users (firstname, lastname, email, notification, password) VALUES (?,?,?,?,?)", 
-        [firstname, lastname, email, notification, password],
-        (err, result)=> {
+      ////QUERY////
+        db.query("SELECT * FROM users WHERE (email = ?)",
+        [email],
+        (err,result) => {
           if (err){
-            console.log(err);
+            res.send({error : err});
           }
-          else {          
-            res.send({message : "Successfully Registered"});
+          if (result.length > 0){
+            res.send({message : "Email Already Registered"});
+      
           }
-        })  
+          else{
+            // User registration      
+            db.query("INSERT INTO users (firstname, lastname, email, notification, password) VALUES (?,?,?,?,?)", 
+            [firstname, lastname, email, notification, hash],
+            (err, result)=> {
+              if (err){
+                console.log(err);
+              }
+              else {          
+                res.send({message : "Successfully Registered"});
+              }
+            })
+            // User registration
+          }
+        }
+      
+        )
+      ////QUERY////
+
+
+    });
   
-  
-        // User registration
-      }
-    }
-  
-    )
+    
   
     
 });
