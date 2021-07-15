@@ -1,7 +1,7 @@
 import React, { Component, useState } from "react";
 import * as AiIcons from "react-icons/ai";
 import { SidebarData } from './sidebarcontent/sidebar';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -18,6 +18,15 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import './header.css';
+import createBrowserHistory from 'history/createBrowserHistory';
+import { Button } from '@material-ui/core';
+
+
+const history = createBrowserHistory({forceRefresh:true});
+
+
+
+
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -83,6 +92,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
+const logout = () => {
+    
+  localStorage.setItem("isauth" , false);
+  
+  
+  history.push('/');
+
+}
+
+
 export default function PrimarySearchAppBar() {
   //sidebar
     const [sidebar, setSidebar] = useState(false);
@@ -127,6 +148,7 @@ export default function PrimarySearchAppBar() {
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={logout}>Log Out</MenuItem>
     </Menu>
   );
 
@@ -170,8 +192,17 @@ export default function PrimarySearchAppBar() {
       </MenuItem>
     </Menu>
   );
+  
+  
+
+  
+ 
+
 
   return (
+
+    
+
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
@@ -244,7 +275,15 @@ export default function PrimarySearchAppBar() {
             >
               <AccountCircle />
             </IconButton>
+            
           </div>
+
+          {/* <Button variant="contained" color="secondary" onClick = {logout}> {msg}  </Button> */}
+             
+            
+
+          
+
           <div className={classes.sectionMobile}>
             <IconButton
               aria-label="show more"
@@ -257,7 +296,9 @@ export default function PrimarySearchAppBar() {
             </IconButton>
           </div>
         </Toolbar>
+        
       </AppBar>
+      
       {renderMobileMenu}
       {renderMenu}
     </div>

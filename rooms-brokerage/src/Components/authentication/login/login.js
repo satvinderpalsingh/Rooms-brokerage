@@ -13,8 +13,9 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
+
 import Axios, { AxiosResponse, AxiosInstance } from 'axios';
-import auth from '../Auth';
+
 
 import createBrowserHistory from 'history/createBrowserHistory';
 
@@ -51,14 +52,33 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignIn() {
+
+  // Axios.get("http://localhost:3001/isUserAuth",{
+  //   headers: {
+  //     "x-access-token" : localStorage.getItem("token"),
+  //   },
+  // }).then((response) => {
+  //     console.log(response);      
+  //     if (response.data == "Authenticated"){
+  //       localStorage.setItem("isauth", true);
+
+  //     }
+  //     else{
+  //       localStorage.setItem("isauth", false);
+  //     }          
+    
+  // });   
+
   const classes = useStyles();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const [loginStatus, setLoginStatus] = useState('');
+  
 
   const history = createBrowserHistory({forceRefresh:true});
+
+  
 
   Axios.defaults.withCredentials = true;
 
@@ -75,36 +95,39 @@ export default function SignIn() {
 
     }).then((response)=> {
       
-      if (response.data.message){
-        setLoginStatus(response.data.message)  ; 
+      if (!response.data.auth){
+         
+        localStorage.setItem("isauth", false);
         
       }
       else{
         console.log(response.data);
-        setLoginStatus(response.data[0].firstname + " Logged in"); 
-        auth.login(() => {
-          history.push("/Ownerdashboard");
-        });
+        localStorage.setItem("token", response.data.token)        
+        localStorage.setItem("isauth", true);      
+        history.push('/Ownerdashboard');
+        
         
       }
       
     });
+
+    
   };
 
-
-  useEffect(() => {
-    Axios.get("http://localhost:3001/login").then((response) => {
-      if (response.data.loggedIn == true){
-        auth.login(() => {
-          history.push("/Ownerdashboard");
-          
-        });
-        
-      }
-      console.log(response);
-    })
-  }, [])
   
+
+  // const userAuthenticated = () => {
+  //   Axios.get("http://localhost:3001/isUserAuth", {
+  //     headers: {
+  //       "x-access-token" : localStorage.getItem("token"),
+  //     },
+  //   }).then((response) => {
+      
+  //     console.log(response);
+  //   });
+  // }
+
+
 
   return (
     
@@ -175,7 +198,6 @@ export default function SignIn() {
           </Grid>
         </form>
       </div>
-      <h3>{loginStatus}</h3>
       
     </Container>
   );

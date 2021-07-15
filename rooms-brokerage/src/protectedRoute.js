@@ -1,30 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Redirect } from "react-router-dom";
-import auth from "./Components/authentication/Auth";
+
+
+
+
+
 
 export const ProtectedRoute = ({
   component: Component,
   ...rest
-}) => {
+}) => {  
+  console.log(isauth);
+  var isauth = localStorage.getItem("isauth");
   return (
     <Route
       {...rest}
-      render={props => {
-        console.log(auth.isAuthenticated);
-        if (auth.isAuthenticated) {
-          return <Component {...props} />;
-        } else {
-          return (
-            <Redirect
-              to={{
-                pathname: "/",
-                state: {
-                  from: props.location
-                }
-              }}
-            />
-          );
-        }
+      render={props => {           
+        
+          if (isauth === "true") {
+            return <Component {...props} />;
+          } else {
+            alert("You need to login first!");
+            return (
+              
+              <Redirect
+                to={{
+                  pathname: "/login",
+                  state: {
+                    from: props.location
+                  }
+                }}
+              />
+            );
+          }
       }}
     />
   );

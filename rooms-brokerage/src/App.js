@@ -11,7 +11,7 @@ import Homepage from './Components/Home/index';
 import Owner from './Components/owner/index';
 import SearchPage from './Components/Home/SearchPage/SearchPage';
 import SearchPageB from './Components/Home/SearchPage/SearchPageB';
-import { ProtectedRoute } from './protectedRoute';
+import  {ProtectedRoute} from './protectedRoute';
 
 
 
@@ -20,11 +20,8 @@ import { ProtectedRoute } from './protectedRoute';
 
 
 
-function App() { 
-
- 
-
-  
+function App() {
+    
   return (
     <div >
       
@@ -43,6 +40,8 @@ function App() {
           <Route exact path="/register" component = {Authentication}/>          
          
           <ProtectedRoute exact path="/Ownerdashboard" component={Owner} />
+
+          <ProtectedRoute exact path="/Ownerupload" component={Owner} />
 
           <Route exact path="/contactus" component = {Contactus} />
 

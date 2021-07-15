@@ -1,9 +1,33 @@
 //app.js
+// const bodyParser = require('body-parser');
+// const cookieParser = require('cookie-parser');
+// const session = require('express-session');
+// app.use(cookieParser());
+// app.use(bodyParser.urlencoded({ extended : true }));
+
+// app.use(session({
+//   key : "userId",
+//   secret : "Keep_it_very_secret_in_normal_use",
+//   resave : false,
+//   saveUninitialized : false,
+//   cookie : {
+//       expires: 60 * 60 * 24,
+//   }
+// }))
+// app.get("/login", (req,res) => {
+//   if (req.session.user){
+//     res.send({loggedIn: true, user: req.session.user});
+//   }
+//   else {
+//     res.send({loggedIn: false });
+//   }
+// })
+
+
 
 const express = require("express");
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
-const session = require('express-session');
+
+const jwt = require ('jsonwebtoken');
 
 const cors = require("cors");
 
@@ -22,32 +46,36 @@ app.use(cors({
   credentials : true
 }));
 
-app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended : true }));
 
-app.use(session({
-  key : "userId",
-  secret : "Keep_it_very_secret_in_normal_use",
-  resave : false,
-  saveUninitialized : false,
-  cookie : {
-      expires: 60 * 60 * 24,
-  }
-}))
 
-app.get("/login", (req,res) => {
-  if (req.session.user){
-    res.send({loggedIn: true, user: req.session.user});
+const verifyJWT = (req, res, next) => {
+  const token = req.headers["x-access-token"]
+
+  if (!token){
+    res.send("You need a token, please give it us next time!");
   }
-  else {
-    res.send({loggedIn: false });
+  else { 
+    jwt.verify(token, "jwtSecret", (err, decoded) => {
+      if (err){
+        res.json({auth: false, message: "U failed to authenticate"});
+      }
+      else{
+        req.userId = decoded.id;
+        next();
+      }
+    })
   }
+}
+
+app.get('/isUserAuth', verifyJWT ,(req,res)=> {  
+  res.send("Authenticated");
 })
 
-
-
-
-
+app.get('/logout', (req,res) => {
+  const token = req.headers["x-access-token"]
+  
+  
+})
 
 app.use('/',indexRouter);
 

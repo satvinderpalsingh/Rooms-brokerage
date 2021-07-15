@@ -11,6 +11,8 @@ const db = database;
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
+const jwt = require ('jsonwebtoken');
+
 router.post('/',(req,res) => {
     
   
@@ -28,18 +30,25 @@ router.post('/',(req,res) => {
       if (result.length > 0) {
         bcrypt.compare(password, result[0].password, (err, response) => {
           if (response){
-            req.session.user = result;
-            console.log(req.session)
-            res.send(result);
+            
+            
+            const id = result[0].id;
+            const token = jwt.sign({id}, "jwtSecret", {
+              expiresIn: 300,
+          })
+
+            // req.session.user = result;
+
+            res.json({auth: true, token: token, result: result});
           }
           else {
-            res.send({ message : "Wrong email or password or make sure you have registered "});
+            res.json({auth: false, message: "wrong username or password"});
           }
         });
         
       }
       else {
-        res.send({ message : "User Doesn't Exists"});
+        res.json({auth: false, message: "no user found"});
       }
     });
   
