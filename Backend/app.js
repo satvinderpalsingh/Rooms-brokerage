@@ -1,4 +1,84 @@
 //app.js
+
+/* 
+Libraries:
+  1. express
+  2. jsonwebtoken
+  3. cors
+  4. mysql
+  5. bcrypt
+
+Optional:
+  6. body-parser
+  7. cookie-parser
+  8. express-session
+
+*/
+
+const express = require("express");  //requiring express
+
+const jwt = require('jsonwebtoken'); //requiring JWT for authentication
+
+const cors = require("cors");  //Requiring cors for making the connection between the server and browser
+
+const indexRouter = require('./routes/index');  //Main Routing Module
+
+
+const PORT = process.env.PORT || 3001;   //Creating Port
+
+const app = express();    //Declaring app var for using and making request with the frontend
+
+app.use(express.json());  //For parsing data from the website
+
+app.use(cors({   //Setting up the cors
+  origin: ["http://localhost:3000"],
+  methods: ["GET", "POST"],
+  credentials: true
+}));
+
+const verifyJWT = (req, res, next) => {    //Verifying the JWT Token
+  const token = req.headers["x-access-token"]
+
+  if (!token) {
+    res.send("You need a token, please give it us next time!");
+  }
+  else {
+    jwt.verify(token, "jwtSecret", (err, decoded) => {
+      if (err) {
+        res.json({ auth: false, message: "U failed to authenticate" });
+      }
+      else {
+        req.userId = decoded.id;
+        next();
+      }
+    })
+  }
+}
+
+app.get('/isUserAuth', verifyJWT, (req, res) => {    //Get data for validating if the user is logged in or not
+  res.send("Authenticated");
+})
+
+app.get('/logout', (req, res) => {    //For logging out
+  const token = req.headers["x-access-token"]
+
+
+})
+
+app.use('/', indexRouter);
+
+app.listen(PORT, () => {
+  console.log(`Server listening on ${PORT}`);
+});
+
+
+
+
+
+
+
+/*                                   Code is for creating the session                            */
+
 // const bodyParser = require('body-parser');
 // const cookieParser = require('cookie-parser');
 // const session = require('express-session');
@@ -23,62 +103,4 @@
 //   }
 // })
 
-
-
-const express = require("express");
-
-const jwt = require ('jsonwebtoken');
-
-const cors = require("cors");
-
-const indexRouter = require('./routes/index');
-
-
-const PORT = process.env.PORT || 3001;
-
-const app = express();
-
-app.use(express.json());
-
-app.use(cors({
-  origin : ["http://localhost:3000"],
-  methods : ["GET", "POST"],
-  credentials : true
-}));
-
-
-
-const verifyJWT = (req, res, next) => {
-  const token = req.headers["x-access-token"]
-
-  if (!token){
-    res.send("You need a token, please give it us next time!");
-  }
-  else { 
-    jwt.verify(token, "jwtSecret", (err, decoded) => {
-      if (err){
-        res.json({auth: false, message: "U failed to authenticate"});
-      }
-      else{
-        req.userId = decoded.id;
-        next();
-      }
-    })
-  }
-}
-
-app.get('/isUserAuth', verifyJWT ,(req,res)=> {  
-  res.send("Authenticated");
-})
-
-app.get('/logout', (req,res) => {
-  const token = req.headers["x-access-token"]
-  
-  
-})
-
-app.use('/',indexRouter);
-
-app.listen(PORT, () => {
-  console.log(`Server listening on ${PORT}`);
-});
+/*                                   Code is for creating the session                            */
