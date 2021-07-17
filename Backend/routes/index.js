@@ -12,7 +12,7 @@ const owner = require('./Owner/owner');
 
 router.use('/login', login);
 router.use('/register', register);
-router.use('/OwnerUpload', owner);
+router.use('/Ownerupload', owner);
 
 
 module.exports = router;

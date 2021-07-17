@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import registerStyles from './registerStyles';
 import Container from '@material-ui/core/Container';
 import Axios from 'axios';
+import { FormControl } from '@material-ui/core';
 
 
 function Copyright() {
@@ -71,14 +72,14 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <FormControl className={classes.form} noValidate post>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="fname"
                 name="firstName"
                 variant="outlined"
-                required = {true}
+                required
                 fullWidth
                 id="firstName"
                 label="First Name"
@@ -164,7 +165,7 @@ export default function SignUp() {
              
             </Grid>
           </Grid>
-        </form>
+        </FormControl>
       </div>
       <h3>{registerStatus}</h3>
     </Container>

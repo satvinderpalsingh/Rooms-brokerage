@@ -17,24 +17,29 @@ Optional:
 
 const express = require("express");  //requiring express
 
-const jwt = require('jsonwebtoken'); //requiring JWT for authentication
-
-const cors = require("cors");  //Requiring cors for making the connection between the server and browser
-
-const indexRouter = require('./routes/index');  //Main Routing Module
-
-
-const PORT = process.env.PORT || 3001;   //Creating Port
-
 const app = express();    //Declaring app var for using and making request with the frontend
 
-app.use(express.json());  //For parsing data from the website
+const cors = require("cors");  //Requiring cors for making the connection between the server and browser
 
 app.use(cors({   //Setting up the cors
   origin: ["http://localhost:3000"],
   methods: ["GET", "POST"],
   credentials: true
 }));
+
+const jwt = require('jsonwebtoken'); //requiring JWT for authentication
+
+
+const indexRouter = require('./routes/index');  //Main Routing Module
+
+
+const PORT = process.env.PORT || 3001;   //Creating Port
+
+
+
+app.use(express.json());  //For parsing data from the website
+
+
 
 const verifyJWT = (req, res, next) => {    //Verifying the JWT Token
   const token = req.headers["x-access-token"]
