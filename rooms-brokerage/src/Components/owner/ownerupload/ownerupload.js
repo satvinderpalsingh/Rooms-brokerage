@@ -10,12 +10,11 @@ import createBrowserHistory from 'history/createBrowserHistory';
 const Ownerupload = () => {
 
   const [postData, setPostData] = useState({
-    name: '',
-    surname: '',
+    adtitle: '',    
+    email: '',
     address: '',
     area: '',
-    price: '',
-    email: '',
+    price: '',    
     phone: '',
     facilities: '',
     description: '',
@@ -41,14 +40,15 @@ const Ownerupload = () => {
 
 
   const history = createBrowserHistory({forceRefresh:true});
+
+  const [displaymsg, setDisplayMsg] = useState('');
   const Owneruploadreq = () => {
 
-
+    
     Axios.post('http://localhost:3001/Ownerupload', {
-
-      email: postData.email,
-      firstname: postData.name,
-      lastname: postData.surname,
+      
+      Adtitle: postData.adtitle, 
+      email: postData.email,     
       address: postData.address,
       no_bedrooms: state.bedroom,
       capacity: state.capacity,
@@ -65,19 +65,29 @@ const Ownerupload = () => {
       (res) => {
         console.log('Axios:',res);
         console.log('Axios data:',res.data);
-        history.push('/Ownerdashboard');
         alert(res.data.message);
+        setDisplayMsg(res.data.message);               
       }).catch((err) => { console.log('Axios Error:', err); });
   };
+  
+  useEffect(()  => {
+    if (displaymsg == "Succesfully added!"){
+      history.push('/Ownerdashboard');
+    }    
+  })
 
+
+  
 
   return (
     <Paper className={classes.paper} elevation={10}>
       <form className={`${classes.root} ${classes.form}`}>
         <Typography variant="h4">Property Details</Typography>
         <FormGroup row>
-          <TextField label="Name" value={postData.name} onChange={(e) => setPostData({ ...postData, name: e.target.value })} />
-          <TextField label="Surname" value={postData.surname} onChange={(e) => setPostData({ ...postData, surname: e.target.value })} />
+        <TextField label="AdTitle" value={postData.adtitle} onChange={(e) => setPostData({ ...postData, adtitle: e.target.value })} />
+        <TextField label="E-mail Id" width={25} value={postData.email} onChange={(e) => setPostData({ ...postData, email: e.target.value })} />
+          {/* <TextField label="Name" value={postData.name} onChange={(e) => setPostData({ ...postData, name: e.target.value })} />
+          <TextField label="Surname" value={postData.surname} onChange={(e) => setPostData({ ...postData, surname: e.target.value })} /> */}
         </FormGroup>
         <FormGroup row>
           <TextField label="Address" fullWidth value={postData.address} onChange={(e) => setPostData({ ...postData, address: e.target.value })} />
@@ -148,18 +158,20 @@ const Ownerupload = () => {
                 <option>Both(Sell/Rent)</option>
               </Select>
             </FormControl>
+
           </div>
-
-
-        </FormGroup>
-        <FormGroup row>
           <TextField label="Approx. area in sqft." width={25} value={postData.area} onChange={(e) => setPostData({ ...postData, area: e.target.value })} />
           <TextField label="Price/Month" width={25} value={postData.price} onChange={(e) => setPostData({ ...postData, price: e.target.value })} />
-        </FormGroup>
-        <FormGroup row>
-          <TextField label="E-mail Id" width={25} value={postData.email} onChange={(e) => setPostData({ ...postData, email: e.target.value })} />
           <TextField label="Phone no." width={25} value={postData.phone} onChange={(e) => setPostData({ ...postData, phone: e.target.value })} />
         </FormGroup>
+        {/* <FormGroup row>
+          <TextField label="Approx. area in sqft." width={25} value={postData.area} onChange={(e) => setPostData({ ...postData, area: e.target.value })} />
+          <TextField label="Price/Month" width={25} value={postData.price} onChange={(e) => setPostData({ ...postData, price: e.target.value })} />
+        </FormGroup> */}
+        {/* <FormGroup row>
+          <TextField label="E-mail Id" width={25} value={postData.email} onChange={(e) => setPostData({ ...postData, email: e.target.value })} />
+          <TextField label="Phone no." width={25} value={postData.phone} onChange={(e) => setPostData({ ...postData, phone: e.target.value })} />
+        </FormGroup> */}
         <TextField label="Facilities(seperated by comma)" fullWidth value={postData.facilities} onChange={(e) => setPostData({ ...postData, facilities: e.target.value })} />
         <div className={classes.file}>
           <label>Upload image:</label>

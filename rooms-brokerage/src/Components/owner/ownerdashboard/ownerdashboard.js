@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import CameraIcon from '@material-ui/icons/PhotoCamera';
@@ -14,6 +14,7 @@ import useStyles from './styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 import SingleCard from "./SingleCard";
+import Axios from 'axios';
 
 
 const Ownerdashboard = () => {
@@ -22,26 +23,54 @@ const Ownerdashboard = () => {
   
   const cards = [1, 2, 3, 4, 5];
 
+  const [ads,setAds] = useState([]);
+
+  const email = localStorage.getItem("email");
+
+  const [msg, setMsg] = useState("Lookout at your properties here!!");
+
+  useEffect(() => {
+    Axios.get("http://localhost:3001/ownerAds",{params: {getemail: email}}).then((response) => {
+      console.log(response.data);
+      setAds(response.data);
+      if (response.data.length === 0){
+        setMsg("No Ads");
+      }
+
+    });
+  }, []);
+
+  
+
   return (
       <React.Fragment>
       <CssBaseline />
       <main>
-        <h1 className={classes.h1}>Lookout at your properties here!!</h1>
+        <h1 className={classes.h1}>{msg}</h1>
         {/* Hero unit */}
         <Container className={classes.cardGrid} maxWidth>
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <SingleCard
-                  img="https://media.cntraveler.com/photos/5a8f258bd363c34048b35aac/master/w_2250,h_1500,c_limit/airbnb-plus-london.jpg"
-                  location="Dadar"
-                  title="3BHK Apartment"
-                  description="3 guest · 1 bedroom · 1 bed · 1.5 shared bthrooms · Wifi · Kitchen · Free parking · Washing Machine"
-                  price="₹35000 / month"
-                />
+            
+            {ads.map((val) => (
+              <Grid item xs={12} sm={6} md={4}>               
+                  
+
+                    <SingleCard
+                      img="https://media.cntraveler.com/photos/5a8f258bd363c34048b35aac/master/w_2250,h_1500,c_limit/airbnb-plus-london.jpg"
+                      location = {val.area}
+                      title={val.Adtitle}
+                      description = {val.description}
+                      price = {val.cost}
+                    />  
+                    
+
+                
+                
               </Grid>
             ))}
+            <a href = "/OwnerUpload">Post Your Ad</a>
+            
           </Grid>
         </Container>
       </main>

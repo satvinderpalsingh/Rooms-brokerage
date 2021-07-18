@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core'
 
 export default makeStyles((theme) => ({
     paper:{
-        padding: theme.spacing(10),
+        padding: theme.spacing(8),
         margin: 10,
         elevation:20,
     },
@@ -21,7 +21,7 @@ button:{
 },
 
 file:{
-    margin: '20px 0',
+    margin: '20px 0 10px 10px',
 },
 
 }))

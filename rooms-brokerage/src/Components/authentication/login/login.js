@@ -53,22 +53,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
 
-  // Axios.get("http://localhost:3001/isUserAuth",{
-  //   headers: {
-  //     "x-access-token" : localStorage.getItem("token"),
-  //   },
-  // }).then((response) => {
-  //     console.log(response);      
-  //     if (response.data == "Authenticated"){
-  //       localStorage.setItem("isauth", true);
-
-  //     }
-  //     else{
-  //       localStorage.setItem("isauth", false);
-  //     }          
-    
-  // });   
-
+ 
   const classes = useStyles();
 
   const [email, setEmail] = useState('');
@@ -85,7 +70,7 @@ export default function SignIn() {
   
 
 
-  
+  const [msg, setMsg] = useState('');
 
   const login = () => {
     Axios.post('http://localhost:3001/login', {   
@@ -94,18 +79,21 @@ export default function SignIn() {
       password : password
 
     }).then((response)=> {
+
       
       if (!response.data.auth){
-         
-        localStorage.setItem("isauth", false);
-        
+        console.log(response.data);
+        setMsg(response.data.message);
+        localStorage.setItem("isauth", false);       
       }
       else{
         console.log(response.data);
         localStorage.setItem("token", response.data.token)        
-        localStorage.setItem("isauth", true);      
-        history.push('/Ownerdashboard');
-        
+        localStorage.setItem("isauth", true);
+        localStorage.setItem("email",email);
+        setMsg(response.data.msg);
+            
+        history.push('/Ownerdashboard');   
         
       }
       
@@ -114,21 +102,9 @@ export default function SignIn() {
     
   };
 
+
+
   
-
-  // const userAuthenticated = () => {
-  //   Axios.get("http://localhost:3001/isUserAuth", {
-  //     headers: {
-  //       "x-access-token" : localStorage.getItem("token"),
-  //     },
-  //   }).then((response) => {
-      
-  //     console.log(response);
-  //   });
-  // }
-
-
-
   return (
     
     <Container component="main" maxWidth="xs">
@@ -197,6 +173,7 @@ export default function SignIn() {
             </Grid>
           </Grid>
         </form>
+        <h4>{msg}</h4>
       </div>
       
     </Container>

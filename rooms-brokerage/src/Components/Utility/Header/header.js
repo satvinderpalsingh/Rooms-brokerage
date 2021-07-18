@@ -97,7 +97,7 @@ const useStyles = makeStyles((theme) => ({
 const logout = () => {
     
   localStorage.setItem("isauth" , false);
-  
+  localStorage.setItem("email","");
   
   history.push('/');
 
