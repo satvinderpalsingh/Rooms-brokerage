@@ -5,6 +5,7 @@ import useStyles from './styles';
 import Container from '@material-ui/core/Container';
 import SingleCard from "./SingleCard";
 import Axios from 'axios';
+import {Button} from '@material-ui/core';
 
 
 const SearchPage = () => {
