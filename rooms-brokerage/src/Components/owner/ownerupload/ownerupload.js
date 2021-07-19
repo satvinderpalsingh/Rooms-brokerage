@@ -41,7 +41,7 @@ const Ownerupload = () => {
 
   const history = createBrowserHistory({forceRefresh:true});
 
-  const [displaymsg, setDisplayMsg] = useState('');
+  // const [displaymsg, setDisplayMsg] = useState('');
   const Owneruploadreq = () => {
 
     
@@ -62,19 +62,18 @@ const Ownerupload = () => {
 
 
     }).then(
-      (res) => {
-        console.log('Axios:',res);
-        console.log('Axios data:',res.data);
+      (res) => {        
         alert(res.data.message);
-        setDisplayMsg(res.data.message);               
+        history.push('/Ownerdashboard');
+        // setDisplayMsg(res.data.message);               
       }).catch((err) => { console.log('Axios Error:', err); });
   };
   
-  useEffect(()  => {
-    if (displaymsg == "Succesfully added!"){
-      history.push('/Ownerdashboard');
-    }    
-  })
+  // useEffect(()  => {
+  //   if (displaymsg == "Succesfully added!"){
+  //     history.push('/Ownerdashboard');
+  //   }    
+  // })
 
 
   
