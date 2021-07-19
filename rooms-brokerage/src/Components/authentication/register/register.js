@@ -14,7 +14,7 @@ import registerStyles from './registerStyles';
 import Container from '@material-ui/core/Container';
 import Axios from 'axios';
 import { FormControl } from '@material-ui/core';
-
+import createBrowserHistory from 'history/createBrowserHistory';
 
 function Copyright() {
   return (
@@ -40,31 +40,43 @@ export default function SignUp() {
   const [passwordReg, setPasswordReg] = useState('');
   const [notificationReg, setNotificationReg] = useState('');
 
-  const [registerStatus, setRegisterStatus] = useState('');
-
-
   
+
+
+  const history = createBrowserHistory({forceRefresh:true});
   
   const register = () => {
 
 
-    Axios.post('http://localhost:3001/register', {
-      firstname : firstnameReg,
-      lastname : lastnameReg,
-      email : emailReg,
-      notification : notificationReg,
-      password : passwordReg
-    }).then((response)=> {
-      console.log(response.data);
-      setRegisterStatus(response.data.message);
-      
-    });
+
+    if (/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(emailReg)) {
+        Axios.post('http://localhost:3001/register', {
+        firstname : firstnameReg,
+        lastname : lastnameReg,
+        email : emailReg,
+        notification : notificationReg,
+        password : passwordReg
+      }).then((response)=> {
+        console.log(response.data);
+        
+        alert(response.data.message);
+        localStorage.setItem("isauth",false);
+        history.push('/login');
+        
+      });
+    }
+    else{
+      alert("Wrong Email!")
+    }
+
+
+    
   };
 
   return (
     <Container  component="main" maxWidth="xs">
      
-      <CssBaseline />
+      
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
@@ -167,7 +179,7 @@ export default function SignUp() {
           </Grid>
         </FormControl>
       </div>
-      <h3>{registerStatus}</h3>
+     
     </Container>
   );
 }

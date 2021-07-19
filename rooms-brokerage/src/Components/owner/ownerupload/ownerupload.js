@@ -4,14 +4,14 @@ import FileBase from 'react-file-base64';
 import useStyles from './styles';
 import Axios from 'axios';
 import createBrowserHistory from 'history/createBrowserHistory';
+// import CssBaseline from '@material-ui/core/CssBaseline';
 
 
 
 const Ownerupload = () => {
 
   const [postData, setPostData] = useState({
-    adtitle: '',    
-    email: '',
+    adtitle: '',   
     address: '',
     area: '',
     price: '',    
@@ -38,17 +38,23 @@ const Ownerupload = () => {
     });
   };
 
-
+  
   const history = createBrowserHistory({forceRefresh:true});
 
   // const [displaymsg, setDisplayMsg] = useState('');
+
+  
+  console.log(postData.email);
   const Owneruploadreq = () => {
+
+    const email = localStorage.getItem('email');
+    console.log(email)
 
     
     Axios.post('http://localhost:3001/Ownerupload', {
       
-      Adtitle: postData.adtitle, 
-      email: postData.email,     
+      adtitle: postData.adtitle, 
+      email: email,     
       address: postData.address,
       no_bedrooms: state.bedroom,
       capacity: state.capacity,
@@ -80,11 +86,12 @@ const Ownerupload = () => {
 
   return (
     <Paper className={classes.paper} elevation={10}>
+      {/* <CssBaseline/> */}
       <form className={`${classes.root} ${classes.form}`}>
         <Typography variant="h4">Property Details</Typography>
         <FormGroup row>
         <TextField label="AdTitle" value={postData.adtitle} onChange={(e) => setPostData({ ...postData, adtitle: e.target.value })} />
-        <TextField label="E-mail Id" width={25} value={postData.email} onChange={(e) => setPostData({ ...postData, email: e.target.value })} />
+        {/* <TextField label="E-mail Id" width={25} value={postData.email} onChange={(e) => setPostData({ ...postData, email: e.target.value })} /> */}
           {/* <TextField label="Name" value={postData.name} onChange={(e) => setPostData({ ...postData, name: e.target.value })} />
           <TextField label="Surname" value={postData.surname} onChange={(e) => setPostData({ ...postData, surname: e.target.value })} /> */}
         </FormGroup>

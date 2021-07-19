@@ -1,9 +1,9 @@
 import React, {useEffect, useState } from "react";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
-import useStyles from './styles';
+import useStyles from '../../Card_style/styles';
 import Container from '@material-ui/core/Container';
-import SingleCard from "./SingleCard";
+import SingleCard from "../../Card_style/SingleCard";
 import Axios from 'axios';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import {Button} from '@material-ui/core';
@@ -54,7 +54,7 @@ const SearchPage = () => {
                     />  
               </Grid>
             ))}
-            <Button onClick={() => history.push('/OwnerUpload')} variant='outlined'>Post Your Ad</Button>
+           
           </Grid>
         </Container>
       </main>

@@ -7,8 +7,8 @@ import * as FcIcons from "react-icons/fc"
 export const SidebarData = [
 
   {
-    title: 'Become a Seller',
-    path: '/Ownerupload',
+    title: 'My Ads',
+    path: '/Ownerdashboard',
     icon: <AiIcons.AiOutlineHome />,
     cName: 'nav-text'       //nav-text-mobile for mobile only view
   }, 
@@ -24,42 +24,42 @@ export const SidebarData = [
     icon: <AiIcons.AiOutlineInfoCircle />,
     cName: 'nav-text'
   },
-  {
-    title: 'Map',
-    path: '/map',
-    icon: <BiIcons.BiMapPin />,
-    cName: 'nav-text'
-  },
+  // {
+  //   title: 'Map',
+  //   path: '/map',
+  //   icon: <BiIcons.BiMapPin />,
+  //   cName: 'nav-text'
+  // },
   {
     title: 'Contact us',
     path: '/contactus',
     icon: <AiIcons.AiOutlineContacts />,
     cName: 'nav-text'
   },
-  {
-    title: 'Help And Faq',
-    path: '/helpandfaq',
-    icon: <BiIcons.BiHelpCircle />,
-    cName: 'nav-text'
-  },
-  {
-    title: 'User Homepage',
-    path: '/userpage',
-    icon: <BiIcons.BiHelpCircle />,
-    cName: 'nav-text'
-  },
-  {
-    title: 'Add Details',
-    path: '/addetails',
-    icon: <BiIcons.BiHelpCircle />,
-    cName: 'nav-text'
-  },
-  {
-    title: 'Wishlist',
-    path: '/wishlist',
-    icon: <BiIcons.BiHelpCircle />,
-    cName: 'nav-text'
-  }
+  // {
+  //   title: 'Help And Faq',
+  //   path: '/helpandfaq',
+  //   icon: <BiIcons.BiHelpCircle />,
+  //   cName: 'nav-text'
+  // },
+  // {
+  //   title: 'User Homepage',
+  //   path: '/userpage',
+  //   icon: <BiIcons.BiHelpCircle />,
+  //   cName: 'nav-text'
+  // },
+  // {
+  //   title: 'Add Details',
+  //   path: '/addetails',
+  //   icon: <BiIcons.BiHelpCircle />,
+  //   cName: 'nav-text'
+  // },
+  // {
+  //   title: 'Wishlist',
+  //   path: '/wishlist',
+  //   icon: <BiIcons.BiHelpCircle />,
+  //   cName: 'nav-text'
+  // }
 
 
 ]

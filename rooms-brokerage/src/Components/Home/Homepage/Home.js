@@ -2,17 +2,20 @@ import react from 'react';
 import './Home.css';
 import Banner from './Banner.js';
 import Card from './Card.js';
+// import CssBaseline from '@material-ui/core/CssBaseline';
 
 function Home(){
     return (
         <div className='home'>
+            {/* <CssBaseline /> */}
             <Banner />
             <div className='home__section'>
-                <div className='row__1'>
+                <div className='row__1' >
                     <Card
                         src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
                         title="Real Time Support"
                         description="We provide real-time support to our users."
+                        link = "/contactus"
                     />
                     <Card
                         src="https://images.unsplash.com/photo-1503174971373-b1f69850bded?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=787&q=80"
