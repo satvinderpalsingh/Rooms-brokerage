@@ -73,7 +73,8 @@ export default function SignIn() {
   const [msg, setMsg] = useState('');
 
   const login = () => {
-    Axios.post('http://localhost:3001/login', {   
+    Axios.post('http://localhost:3001/login', {           ///local
+    // Axios.post('mysql://uzey35wx08fxxsmp:gvuMHvWrxsA9atFuK9ci@byhwavuppyienosgunop-mysql.services.clever-cloud.com:3306/byhwavuppyienosgunop/login', {     
 
       email : email,      
       password : password

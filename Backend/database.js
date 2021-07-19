@@ -2,13 +2,13 @@ const express = require("express");
 const mysql = require("mysql");
 const db = mysql.createConnection({
     user: "root",
-    // user: "sql6426390",
+    // user: "uzey35wx08fxxsmp",
     host: "localhost",
-    // host: "sql6.freemysqlhosting.net",    
+    // host: "byhwavuppyienosgunop-mysql.services.clever-cloud.com",    
     password: "password",
-    // password: "lm6Ua4pHRj",
+    // password: "gvuMHvWrxsA9atFuK9ci",
     database: "LoginSystem",
-    // database: "sql6426390",
+    // database: "byhwavuppyienosgunop",
     insecureAuth: true
 });
 

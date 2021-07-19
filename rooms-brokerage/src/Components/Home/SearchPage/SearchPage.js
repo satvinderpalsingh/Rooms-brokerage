@@ -33,7 +33,7 @@ const SearchPage = () => {
 
   return (
       <React.Fragment>
-      <CssBaseline />
+      {/* <CssBaseline /> */}
       <main>
         <h1 className={classes.h1}>{msg}</h1>
         {/* Hero unit */}
