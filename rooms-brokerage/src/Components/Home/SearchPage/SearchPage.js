@@ -5,7 +5,9 @@ import useStyles from './styles';
 import Container from '@material-ui/core/Container';
 import SingleCard from "./SingleCard";
 import Axios from 'axios';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import {Button} from '@material-ui/core';
+import { useHistory } from "react-router-dom";
 
 
 const SearchPage = () => {
@@ -27,7 +29,7 @@ const SearchPage = () => {
     });
   }, []);
 
-  
+  const history = useHistory();
 
   return (
       <React.Fragment>
@@ -50,13 +52,9 @@ const SearchPage = () => {
                       description = {val.description}
                       price = {val.cost}
                     />  
-                    
-
-                
-                
               </Grid>
             ))}
-            
+            <Button onClick={() => history.push('/OwnerUpload')} variant='outlined'>Post Your Ad</Button>
           </Grid>
         </Container>
       </main>

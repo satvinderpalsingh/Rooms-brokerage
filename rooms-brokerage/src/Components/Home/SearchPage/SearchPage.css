@@ -9,6 +9,9 @@
     text-transform: inherit;
     margin:5px;
 }
+.button {
+    width: 500px;
+}
 @media (max-width: 990px) {
     .searchPage{
         width: 100%;
