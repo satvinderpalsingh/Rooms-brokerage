@@ -15,33 +15,34 @@ Optional:
 
 */
 
-const express = require("express");  //requiring express
+const express = require("express"); 
 
-const app = express();    //Declaring app var for using and making request with the frontend
+const app = express();   
 
-const cors = require("cors");  //Requiring cors for making the connection between the server and browser
+const cors = require("cors"); 
 
-app.use(cors({   //Setting up the cors
-  origin: ["http://localhost:3000"],
+app.use(cors({ 
+  origin: ["http://localhost:3000"], //working locally
+  // origin: ["sql6.freemysqlhosting.net"],
   methods: ["GET", "POST"],
   credentials: true
 }));
 
-const jwt = require('jsonwebtoken'); //requiring JWT for authentication
+const jwt = require('jsonwebtoken'); 
 
 
-const indexRouter = require('./routes/index');  //Main Routing Module
+const indexRouter = require('./routes/index');  
 
 
-const PORT = process.env.PORT || 3001;   //Creating Port
-
-
-
-app.use(express.json());  //For parsing data from the website
+const PORT = process.env.PORT || 3001;   
 
 
 
-const verifyJWT = (req, res, next) => {    //Verifying the JWT Token
+app.use(express.json());  
+
+
+
+const verifyJWT = (req, res, next) => {    
   const token = req.headers["x-access-token"]
 
   if (!token) {
@@ -60,11 +61,11 @@ const verifyJWT = (req, res, next) => {    //Verifying the JWT Token
   }
 }
 
-app.get('/isUserAuth', verifyJWT, (req, res) => {    //Get data for validating if the user is logged in or not
+app.get('/isUserAuth', verifyJWT, (req, res) => {  
   res.send("Authenticated");
 })
 
-app.get('/logout', (req, res) => {    //For logging out
+app.get('/logout', (req, res) => { 
   const token = req.headers["x-access-token"]
 
 
