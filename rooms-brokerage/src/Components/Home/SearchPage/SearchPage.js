@@ -18,8 +18,11 @@ const SearchPage = () => {
 
   const [msg, setMsg] = useState("Places Nearby");
 
+  
+
   useEffect(() => {
-    Axios.get("http://localhost:3001/userAds").then((response) => {
+    Axios.get("https://powerful-plateau-03789.herokuapp.com/userAds").then((response) => {
+    // Axios.get("http://localhost:3001/userAds").then((response) => {
       console.log(response.data);
       setAds(response.data);
       if (response.data.length === 0){
