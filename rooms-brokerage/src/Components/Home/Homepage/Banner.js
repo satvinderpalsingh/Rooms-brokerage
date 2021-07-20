@@ -18,7 +18,7 @@ function Banner()  {
             <div className='banner2__info'>
             <h1>Looking For Your Dream Home?</h1>
             <h4>Here is our curated list of properties available at best price</h4>
-            <Button onClick={() => history.push('/searchb')} variant='outlined'>Find Out</Button>
+            <Button onClick={() => history.push('/search')} variant='outlined'>Find Out</Button>
             </div>
         </div>
 

@@ -35,33 +35,54 @@ const SearchPage = () => {
   const history = useHistory();
 
   return (
-      <React.Fragment>
-      {/* <CssBaseline /> */}
-      <main>
-        <h1 className={classes.h1}>{msg}</h1>
-        {/* Hero unit */}
-        <Container className={classes.cardGrid} maxWidth>
-          {/* End hero unit */}
-          <Grid container spacing={4}>
-            
-            {ads.map((val) => (
-              <Grid item xs={12} sm={6} md={4}>               
-                  
+    <React.Fragment>
+    {/* <CssBaseline /> */}
+    <main>
+      
+      
+      
 
-                    <SingleCard
-                      img="https://media.cntraveler.com/photos/5a8f258bd363c34048b35aac/master/w_2250,h_1500,c_limit/airbnb-plus-london.jpg"
-                      location = {val.area}
-                      title={val.Adtitle}
-                      description = {val.description}
-                      price = {val.cost}
-                    />  
-              </Grid>
-            ))}
-           
+
+      {/* Hero unit */}
+      <Container className={classes.cardGrid} maxWidth>
+        {/* End hero unit */}
+        <Grid container spacing={4}>
+
+          {ads.map((val) => (
+            <Grid item xs={12} sm={6} md={4}>
+
+
+              <SingleCard
+                img="https://media.cntraveler.com/photos/5a8f258bd363c34048b35aac/master/w_2250,h_1500,c_limit/airbnb-plus-london.jpg"
+                Adtitle = {val.Adtitle}                  
+                address={val.address}
+                no_bedrooms={val.no_bedrooms}
+                capacity={val.capacity}  
+                phone_no={val.phone_no}
+                facilities={val.facilities}            
+                description={val.description}
+                cost={val.cost}
+              />
+
+
+
+            </Grid>
+          ))}
+          <Grid item xs={12} sm={6} md={4}>
+
+
+
+
+
+
           </Grid>
-        </Container>
-      </main>
-    </React.Fragment>
+
+
+        </Grid>
+
+      </Container>
+    </main>
+  </React.Fragment>
     );
   }
 
