@@ -30,7 +30,7 @@ const cors = require("cors");
 
 app.use(cors({ 
   // origin: ["http://localhost:3000"], //working locally
-  origin: ["https://room-brokerage.netlify.app/"],   // live server
+  origin: ["https://room-brokerage.netlify.app"],   // live server
   methods: ["GET", "POST"],
   credentials: true
 }));
