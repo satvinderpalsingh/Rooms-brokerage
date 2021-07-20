@@ -50,7 +50,8 @@ export default function SignUp() {
 
 
     if (/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(emailReg)) {
-        Axios.post('http://localhost:3001/register', {
+        // Axios.post('http://localhost:3001/register', {
+        Axios.post('https://powerful-plateau-03789.herokuapp.com', {
         firstname : firstnameReg,
         lastname : lastnameReg,
         email : emailReg,

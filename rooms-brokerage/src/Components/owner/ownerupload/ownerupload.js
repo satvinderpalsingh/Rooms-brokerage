@@ -48,10 +48,11 @@ const Ownerupload = () => {
   const Owneruploadreq = () => {
 
     const email = localStorage.getItem('email');
+
     console.log(email)
 
-    
-    Axios.post('http://localhost:3001/Ownerupload', {
+    // Axios.post('http://localhost:3001/Ownerupload', {
+    Axios.post('https://powerful-plateau-03789.herokuapp.com/Ownerupload', {
       
       adtitle: postData.adtitle, 
       email: email,     

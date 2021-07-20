@@ -31,7 +31,8 @@ const Ownerdashboard = () => {
   const [msg, setMsg] = useState("Lookout at your properties here!!");
 
   useEffect(() => {
-    Axios.get("http://localhost:3001/ownerAds", { params: { getemail: email } }).then((response) => {
+    // Axios.get("http://localhost:3001/ownerAds", { params: { getemail: email } }).then((response) => {
+    Axios.get("https://powerful-plateau-03789.herokuapp.com/ownerAds", { params: { getemail: email } }).then((response) => {
       console.log(response.data);
       setAds(response.data);
       if (response.data.length === 0) {
